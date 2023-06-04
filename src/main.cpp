@@ -11,5 +11,8 @@ int CALLBACK WinMain(
 ) {
     printf("Hello, world!\n");
 
+	WebViewWindow* window = new WebViewWindow(800, 600);
+	window->Run();
+
     return 0;   
 }
