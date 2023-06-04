@@ -2,8 +2,14 @@
 
 #include "widget\webview.h"
 
-int main(int argc, char** argv)
-{
-    printf("Hello World!\n");
-    return 0;
+// Make a WinMain function
+int CALLBACK WinMain(
+	_In_ HINSTANCE hInstance,
+	_In_ HINSTANCE hPrevInstance,
+	_In_ LPSTR     lpCmdLine,
+	_In_ int       nCmdShow
+) {
+    printf("Hello, world!\n");
+
+    return 0;   
 }
