@@ -7,6 +7,11 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(external/glad/cmake glad_cmake)
 add_subdirectory(external/glfw glfw)
 
+find_library(WebView2Loader_Lib
+    NAMES WebView2Loader.dll
+    PATHS ${CMAKE_SOURCE_DIR}/external/webview2/build/native/x64
+)
+
 # Add the .cpp files recursively from the src directory
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
@@ -14,4 +19,7 @@ glad_add_library(glad_gl_core_mx_33 REPRODUCIBLE MX API gl:core=3.3)
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad_gl_core_mx_33)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw glad_gl_core_mx_33 ${WebView2Loader_Lib})
+
+# Add include directory for webview2
+include_directories(${CMAKE_SOURCE_DIR}/external/webview2/build/native/include)
